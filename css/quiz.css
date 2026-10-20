@@ -1,0 +1,47 @@
+/* Estilos propios del juego de instrumentos (se suman a styles.css). */
+
+/* styles.css da display a muchas clases; esto asegura que [hidden] siempre oculte. */
+[hidden] { display: none !important; }
+
+.quiz { flex: 1; width: min(900px, 100%); margin: 0 auto; padding: 1.5rem; }
+.screen { display: flex; flex-direction: column; gap: 1rem; align-items: stretch; }
+.panel.screen { padding: 1.5rem; }
+.panel h2 { text-transform: none; font-size: 1.2rem; color: var(--text); }
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; font-weight: 600; }
+.field select {
+  padding: 0.6rem; font: inherit; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+}
+.field input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+.row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.primary, .secondary { padding: 0.75rem 1.2rem; border-radius: 10px; font-weight: 600; }
+.primary { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
+.secondary { background: transparent; border: 1px solid var(--border); }
+.secondary:hover { border-color: var(--accent); }
+
+/* Imagen del instrumento (emoji ahora, foto después). */
+.instrument { text-align: center; font-size: 7rem; line-height: 1.1; }
+.instrument img { max-width: 240px; max-height: 240px; object-fit: contain; border-radius: 12px; }
+#study-name { text-align: center; margin: 0; }
+#study-family, #study-progress { text-align: center; }
+
+/* Opciones del test. */
+.options { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; }
+.option {
+  position: relative; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius);
+}
+.option:hover:not(:disabled) { border-color: var(--accent); }
+.option:disabled { cursor: default; }
+.option kbd { position: absolute; top: 0.4rem; left: 0.4rem; font-size: 0.7rem; }
+.option img { max-width: 80%; max-height: 80%; object-fit: contain; }
+.option.ok { border-color: var(--ok); box-shadow: 0 0 0 3px var(--ok); }
+.option.ko { border-color: var(--ko); box-shadow: 0 0 0 3px var(--ko); }
+
+#test-card { min-height: 220px; }
+#test-card .instrument { font-size: 4rem; }
+.screen .hint a { color: var(--accent); }

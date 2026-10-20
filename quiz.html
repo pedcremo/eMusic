@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oído por instrumentos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎷 Oído por instrumentos</h1>
+    <div class="stats">
+      <div class="stat"><span>Puntos</span><strong id="score">0</strong></div>
+      <div class="stat"><span>Récord</span><strong id="best">0</strong></div>
+      <div class="stat"><span>Racha</span><strong id="streak">0</strong></div>
+      <div class="stat"><span>Acierto</span><strong id="accuracy">—</strong></div>
+    </div>
+  </header>
+
+  <main class="quiz">
+
+    <!-- 1. Configuración -->
+    <section id="screen-setup" class="screen panel">
+      <h2>Nueva sesión</h2>
+      <label class="field">Categoría
+        <select id="category">
+          <option value="general">Instrumentos en general</option>
+          <option value="orquesta">Instrumentos de orquesta</option>
+          <option value="banda">Instrumentos de banda</option>
+        </select>
+      </label>
+      <label class="field">Dificultad
+        <select id="difficulty">
+          <option value="easy">Fácil</option>
+          <option value="medium">Medio</option>
+          <option value="hard">Difícil</option>
+          <option value="expert">Experto</option>
+        </select>
+      </label>
+      <label class="field">Instrumentos en la sesión: <strong id="count-label">5</strong>
+        <input id="count" type="range" min="3" max="10" value="5">
+      </label>
+      <p id="setup-info" class="hint"></p>
+      <button class="primary" data-action="start">Empezar a estudiar</button>
+      <p class="hint"><a href="index.html">← Volver al dictado musical</a></p>
+    </section>
+
+    <!-- 2. Estudio -->
+    <section id="screen-study" class="screen panel" hidden>
+      <p id="study-progress" class="hint"></p>
+      <div id="study-image" class="instrument"></div>
+      <h2 id="study-name"></h2>
+      <p id="study-family" class="hint"></p>
+      <div class="row">
+        <button class="secondary" data-action="study-replay">🔁 Repetir sonido</button>
+        <button class="primary" data-action="study-next">Siguiente →</button>
+      </div>
+    </section>
+
+    <!-- 3. ¿Seguir o test? -->
+    <section id="screen-choice" class="screen panel" hidden>
+      <h2>Serie terminada</h2>
+      <p id="choice-text"></p>
+      <div class="row">
+        <button class="secondary" data-action="more-study">📚 Seguir estudiando</button>
+        <button class="primary" data-action="go-test">🎯 Pasar al test</button>
+      </div>
+    </section>
+
+    <!-- 4. Test -->
+    <section id="screen-test" class="screen" hidden>
+      <p id="test-progress" class="hint"></p>
+      <div id="test-card" class="card" data-tone="">
+        <p id="test-status" class="status"></p>
+        <div id="test-reveal" class="instrument"></div>
+        <p id="test-name" class="answer"></p>
+      </div>
+      <div class="timer"><div id="timer-bar"></div></div>
+      <div id="options" class="options"></div>
+      <div class="row">
+        <button class="secondary" data-action="test-replay"><kbd>A</kbd> Repetir sonido (resta puntos)</button>
+        <button class="secondary" data-action="quit">Salir</button>
+      </div>
+    </section>
+
+    <!-- 5. Resumen -->
+    <section id="screen-summary" class="screen panel" hidden>
+      <h2>Resultado del test</h2>
+      <p id="summary-text"></p>
+      <p id="summary-failed" class="hint"></p>
+      <div class="row">
+        <button class="secondary" data-action="more-study">📚 Estudiar otra vez</button>
+        <button class="secondary" data-action="go-test">🎯 Repetir test</button>
+        <button class="primary" data-action="new-session">Nueva sesión</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button class="link" data-action="reset">Borrar progreso</button>
+  </footer>
+
+  <script src="js/logic.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/quiz-logic.js"></script>
+  <script src="js/quiz-audio.js"></script>
+  <script src="data/instruments.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

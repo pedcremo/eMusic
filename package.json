@@ -4,7 +4,7 @@
   "private": true,
   "description": "Juego en JavaScript + HTML + CSS para practicar dictado musical",
   "scripts": {
-    "test": "node --test test/logic.test.js",
+   "test": "node --test test/logic.test.js test/quiz-logic.test.js",
     "start": "python3 -m http.server 8000"
   }
 }
